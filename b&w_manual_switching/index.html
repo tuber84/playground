@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <title></title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>B&W manual switching</title>
+    <meta name="color-sheme" content="light dark" />
+
+    <link
+      href="css/light.css"
+      rel="stylesheet"
+      media="(prefers-color-scheme: light)"
+    />
+    <link
+      href="css/dark.css"
+      rel="stylesheet"
+      media="(prefers-color-scheme: dark)"
+    />
+    <link href="css/style.css" rel="stylesheet" />
+  </head>
+  <body class="sky">
+    <div class="body"></div>
+
+    <fieldset class="switcher">
+      <legend class="switcher__legend">Scheme</legend>
+
+      <input
+        type="radio"
+        name="color-sheme"
+        value="light"
+        aria-label="light"
+        class="switcher__radio switcher__radio-light"
+      />
+      <input
+        type="radio"
+        name="color-sheme"
+        value="auto"
+        aria-label="system"
+        class="switcher__radio switcher__radio-auto"
+        checked
+      />
+      <input
+        type="radio"
+        name="color-sheme"
+        value="dark"
+        aria-label="dark"
+        class="switcher__radio switcher__radio-dark"
+      />
+      <div class="switcher__status"></div>
+    </fieldset>
+  </body>
+</html>
