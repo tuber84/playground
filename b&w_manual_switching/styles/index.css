@@ -14,6 +14,7 @@ body {
   background-color: var(--sky-color);
   background-image: var(--sky-image);
   background-size: cover;
+  background-repeat: no-repeat;
   font-family: sans-serif;
 }
 
@@ -23,8 +24,8 @@ body {
   border-radius: 50%;
   background-color: var(--body-color);
   background-image: radial-gradient(
-    circle at 20% 20%,
-    var(--body-color) 50%,
+    circle at 40% 40%,
+    var(--body-color) 20%,
     var(--body-shadow)
   );
   box-shadow: 0 0 10vmin var(--body-glow);
@@ -64,14 +65,16 @@ body {
   outline: none;
 }
 
-.switcher__radio-light {
-  background-image: url("../images/light.svg");
+.switcher__radio--light {
+  background-image: url("../icons/light.svg");
 }
-.switcher__radio-auto {
-  background-image: url("../images/auto.svg");
+
+.switcher__radio--auto {
+  background-image: url("../icons/auto.svg");
 }
-.switcher__radio-dark {
-  background-image: url("../images/dark.svg");
+
+.switcher__radio--dark {
+  background-image: url("../icons/dark.svg");
 }
 
 .switcher__status {
@@ -85,7 +88,7 @@ body {
   border-radius: 18px;
   background-color: rgb(255 255 255 / 0.5);
   background-repeat: no-repeat;
-  background-image: url("../images/status.svg");
+  background-image: url("../icons/status.svg");
   background-size: 32px;
   background-position: center;
   transition: background-position 0.1s ease-in;
@@ -95,14 +98,14 @@ body {
   box-shadow: 0 0 0 2px black;
 }
 
-.switcher__radio-light:checked ~ .switcher__status {
+.switcher__radio--light:checked ~ .switcher__status {
   background-position: left 2px center;
 }
 
-.switcher__radio-auto:checked ~ .switcher__status {
+.switcher__radio--auto:checked ~ .switcher__status {
   background-position: center center;
 }
 
-.switcher__radio-dark:checked ~ .switcher__status {
+.switcher__radio--dark:checked ~ .switcher__status {
   background-position: right 2px center;
 }
