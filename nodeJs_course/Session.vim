@@ -13,13 +13,14 @@ if &shortmess =~ 'A'
 else
   set shortmess=aoO
 endif
-badd +22 /mnt/c/_proekty/JS/playground/nodeJs_course/stream/stream.js
-badd +6 /mnt/c/_proekty/JS/playground/nodeJs_course/docs/write_stream.txt
+badd +17 app.js
+badd +2 /mnt/c/_proekty/JS/playground/.gitignore
+badd +9 server/server.js
 argglobal
 %argdel
-edit /mnt/c/_proekty/JS/playground/nodeJs_course/stream/stream.js
+edit server/server.js
 argglobal
-balt /mnt/c/_proekty/JS/playground/nodeJs_course/docs/write_stream.txt
+balt /mnt/c/_proekty/JS/playground/.gitignore
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -29,15 +30,20 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-8,12fold
-13,16fold
+11,14fold
+16,19fold
+5,20fold
+5,21fold
+23,24fold
+23,25fold
 let &fdl = &fdl
-let s:l = 8 - ((7 * winheight(0) + 27) / 54)
+let s:l = 16 - ((15 * winheight(0) + 27) / 54)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 8
-normal! 037|
+keepjumps 16
+normal! 022|
+if exists(':tcd') == 2 | tcd /mnt/c/_proekty/JS/playground/nodeJs_course | endif
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
