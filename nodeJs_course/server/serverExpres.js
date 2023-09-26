@@ -1,5 +1,6 @@
 const express = require('express');
 const path = require('path');
+const morgan = require('morgan');
 
 const app = express();
 app.set('view engine', 'ejs');
@@ -9,6 +10,17 @@ const createPath = (page) => path.resolve(__dirname, 'ejs-html', `${page}.ejs`);
 
 app.listen(PORT, 'localhost', (error) => {
     error ? console.log(error) : console.log(`listening port ${PORT}`);
+
+    // app.use((req, pes, next) => {
+    //     console.log(`path: ${req.path}`);
+    //     console.log(`path: ${req.method}`);
+    //     next();
+    // });
+    app.use(
+        morgan(':method :url :status :res[content-lenght] - response-time ms')
+    );
+
+    app.use(express.static('styles'));
 
     app.get('/', (req, res) => {
         const title = 'Home';
