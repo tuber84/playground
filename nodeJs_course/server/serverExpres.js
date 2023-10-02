@@ -14,6 +14,8 @@ app.listen(PORT, 'localhost', (error) => {
 
 app.use(morgan(':method :url :status :res[content-lenght] - response-time ms'));
 
+app.use(express.urlencoded({ extended: false }));
+
 app.use(express.static('styles')); // подключаем стили,добавляем папку стилей в исключение
 
 app.get('/', (req, res) => {
@@ -52,6 +54,18 @@ app.get('/posts', (req, res) => {
     ];
 
     res.render(createPath('posts'), { title, posts });
+});
+
+app.post('/add-post', (req, res) => {
+    const { title, author, text } = req.body;
+    const post = {
+        id: new Date(),
+        date: new Date().toLocaleDateString(),
+        title,
+        author,
+        text,
+    };
+    res.render(createPath('post'), { post, title });
 });
 
 app.get('/add-post', (req, res) => {
