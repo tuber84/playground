@@ -2,7 +2,9 @@ const express = require('express');
 const path = require('path');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
+const methodOverride = require('method-override');
 const Post = require('./models/post');
+const Contact = require('./models/contacts');
 
 const app = express();
 app.set('view engine', 'ejs');
@@ -27,42 +29,106 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use(express.static('styles')); // подключаем стили,добавляем папку стилей в исключение
 
+app.use(methodOverride('_method'));
+
 app.get('/', (req, res) => {
     const title = 'Home';
     res.render(createPath('index'), { title });
 });
+
 app.get('/contacts', (req, res) => {
     const title = 'Contacts';
-    const contacts = [
-        { name: 'Youtube', link: 'https://3dnews.ru/' },
-        { name: 'Twitter', link: 'https://3dnews.ru/' },
-    ];
-    res.render(createPath('contacts'), { contacts, title });
+    Contact.find()
+        .then((contacts) =>
+            res.render(createPath('contacts'), {
+                contacts,
+                title,
+            })
+        )
+        .catch((error) => {
+            console.log(error);
+            res.render(createPath('error'), {
+                title: 'Error',
+            });
+        });
 });
+
+app.delete('/posts/:id', (req, res) => {
+    const title = 'new post';
+    Post.findByIdAndDelete(req.params.id)
+        .then((result) => res.sendStatus(200))
+        .catch((error) => {
+            console.log(error);
+            res.render(createPath('error'), {
+                title: 'Error',
+            });
+        });
+});
+
 app.get('/posts/:id', (req, res) => {
     const title = 'new post';
-    const post = {
-        id: '1',
-        text: 'sdafgsdgsdksdaadkj   fgsdfgdfg  dfgsgsdf  34j  dsfsdfgd  wfsg lghlasl',
-        title: 'Заготоловок поста',
-        date: '02.10.2023',
-        author: 'YuRock',
-    };
-    res.render(createPath('post'), { title, post });
+    Post.findById(req.params.id)
+        .then((post) =>
+            res.render(createPath('post'), {
+                post,
+                title,
+            })
+        )
+        .catch((error) => {
+            console.log(error);
+            res.render(createPath('error'), {
+                title: 'Error',
+            });
+        });
 });
-app.get('/posts', (req, res) => {
-    const title = 'какой то текст';
-    const posts = [
-        {
-            id: '1',
-            text: 'sdafgsdgsdksdaadkj   fgsdfgdfg  dfgsgsdf  34j  dsfsdfgd  wfsg lghlasl',
-            title: 'Заготоловок поста',
-            date: '02.10.2023',
-            author: 'YuRock',
-        },
-    ];
 
-    res.render(createPath('posts'), { title, posts });
+app.get('/edit/:id', (req, res) => {
+    const title = 'Edit post';
+    Post.findById(req.params.id)
+        .then((post) =>
+            res.render(createPath('edit-post'), {
+                post,
+                title,
+            })
+        )
+        .catch((error) => {
+            console.log(error);
+            res.render(createPath('error'), {
+                title: 'Error',
+            });
+        });
+});
+
+app.put('/edit/:id', (req, res) => {
+    const { title, author, text } = req.body;
+    const { id } = req.params;
+
+    Post.findByIdAndUpdate(id, { title, author, text })
+        .then((result) => res.redirect(`/posts/${id}`))
+        .catch((error) => {
+            console.log(error);
+            res.render(createPath('error'), {
+                title: 'Error',
+            });
+        });
+});
+
+app.get('/posts', (req, res) => {
+    const title = 'list of post';
+    Post.find()
+        .sort({ createdAt: -1 })
+        .then((posts) =>
+            res.render(createPath('posts'), {
+                posts,
+                title,
+            })
+        )
+        .catch((error) => {
+            console.log(error);
+            res.render(createPath('error'), {
+                title: 'Error',
+            });
+        });
 });
 
 app.post('/add-post', (req, res) => {
@@ -73,7 +139,7 @@ app.post('/add-post', (req, res) => {
         text,
     });
     post.save()
-        .then((result) => res.send(result))
+        .then((result) => res.redirect('/posts'))
         .catch((error) => {
             console.log(error);
             res.render(createPath('error'), { title: 'Error' });
