@@ -1,10 +1,10 @@
 const express = require('express');
-const path = require('path');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
 const methodOverride = require('method-override');
 const postRoutes = require('./routes/post-routes');
 const contactRoutes = require('./routes/contacts-routes');
+const createPath = require('./helpers/create-path');
 
 const app = express();
 app.set('view engine', 'ejs');
@@ -16,8 +16,6 @@ mongoose
     .connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
     .then((res) => console.log('connected to db'))
     .catch((error) => console.log(error));
-
-const createPath = (page) => path.resolve(__dirname, 'ejs-html', `${page}.ejs`);
 
 app.listen(PORT, 'localhost', (error) => {
     error ? console.log(error) : console.log(`listening port ${PORT}`);
@@ -34,14 +32,6 @@ app.use(methodOverride('_method'));
 app.get('/', (req, res) => {
     const title = 'Home';
     res.render(createPath('index'), { title });
-});
-
-app.get('/add-post', (req, res) => {
-    const title = 'Add post';
-    res.render(createPath('add-post'), { title });
-});
-app.get('/contacts2', (req, res) => {
-    res.redirect('/contacts');
 });
 
 app.use(postRoutes);
