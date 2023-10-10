@@ -1,6 +1,7 @@
 const express = require('express');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
+require('dotenv').config();
 const methodOverride = require('method-override');
 const postRoutes = require('./routes/post-routes');
 const postApiRoutes = require('./routes/api-post-routes');
@@ -9,17 +10,19 @@ const createPath = require('./helpers/create-path');
 
 const app = express();
 app.set('view engine', 'ejs');
-const PORT = 3000;
-const db =
-    'mongodb+srv://tuber:1529Liga2884@cluster0.4pks7de.mongodb.net/?retryWrites=true&w=majority&appName=AtlasApp';
 
 mongoose
-    .connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
+    .connect(process.env.MONGO_URL, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+    })
     .then((res) => console.log('connected to db'))
     .catch((error) => console.log(error));
 
-app.listen(PORT, 'localhost', (error) => {
-    error ? console.log(error) : console.log(`listening port ${PORT}`);
+app.listen(process.env.PORT, 'localhost', (error) => {
+    error
+        ? console.log(error)
+        : console.log(`listening port ${process.env.PORT}`);
 });
 
 app.use(morgan(':method :url :status :res[content-lenght] - response-time ms'));
