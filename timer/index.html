@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>timer</title>
+    <link rel="stylesheet" href="./slyle.css" />
+    <script>
+      src="./app.js" defer
+    </script>
+  </head>
+  <body>
+    <div class="wrapper"></div>
+    <div class="logo">
+      <img src="./images/logo.svg" alt="logo" />
+    </div>
+
+    <form class="timer">
+      <div class="info">
+        Set timer to
+        <input
+          type="number"
+          name="time"
+          aria-label="minute to timner"
+          value="10"
+        />
+        minutes
+      </div>
+      <div class="countdown">
+        <div class="num" id="min_tens">0</div>
+        <div class="num" id="min">0</div>
+        <div class="dots">:</div>
+        <div class="num" id="sec_tens">0</div>
+        <div class="num" id="sec">0</div>
+      </div>
+      <button type="submit" class="button">
+        <img src="./images/play.svg" alt="icon play" />
+        Start timer
+      </button>
+    </form>
+  </body>
+</html>
