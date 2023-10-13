@@ -5,16 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>timer</title>
     <link rel="stylesheet" href="./slyle.css" />
-    <script>
-      src="./app.js" defer
-    </script>
   </head>
   <body>
     <div class="wrapper">
       <div class="logo">
         <img src="./images/logo.svg" alt="logo" />
       </div>
-      <form class="timer">
+      <form class="timer" onsubmit="app.submit(event)">
         <div class="info">
           Set timer to
           <input
@@ -38,5 +35,8 @@
         </button>
       </form>
     </div>
+    <script>
+      src = "./app.js";
+    </script>
   </body>
 </html>
