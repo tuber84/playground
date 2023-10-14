@@ -8,8 +8,8 @@ class App {
   #interval;
 
   submit(event) {
-    event.preventDefault;
-    const formData = new FormData(event.target); // получаем данные из формы
+    event.preventDefault();
+    const formData = new FormData(event.target);
     const time = formData.get("time");
     this.#clearTimer();
     this.#startTimer(time);
@@ -28,7 +28,7 @@ class App {
   }
 
   #startTimer(time) {
-    const emd = Date.now + time * 1000 * 60;
+    const end = Date.now() + time * 1000 * 60;
     this.#interval = setInterval(() => {
       const now = Date.now();
       const delta = end - now;
@@ -36,14 +36,20 @@ class App {
         clearInterval(this.#interval);
         return;
       }
-    }, 500);
+      this.#setTimer({
+        min_tens: Math.floor(delta / 1000 / 60 / 10),
+        min: Math.floor((delta / 1000 / 60) % 10),
+        sec_tens: Math.floor((delta % 60000) / 10000),
+        sec: Math.floor(((delta % 60000) / 1000) % 10),
+      });
+    }, 10);
   }
 
-  #setTimer({ min_tens, min, sec, sec_tens }) {
+  #setTimer({ min_tens, min, sec_tens, sec }) {
+    this.timer.min_tens.innerText = min_tens;
+    this.timer.min.innerText = min;
     this.timer.sec_tens.innerText = sec_tens;
     this.timer.sec.innerText = sec;
-    this.timer.min.innerText = min;
-    this.timer.min_tens.innerText = min_tens;
   }
 }
 
