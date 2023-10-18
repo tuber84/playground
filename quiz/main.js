@@ -84,4 +84,12 @@ function checkAnswer() {
         submitBtn.blur();
         return;
     }
+    // Получаем номер ответа пользователя
+    const userAnswer = parseInt(checkedRadio.value);
+    console.log(userAnswer);
+
+    // Проверка верный ли ответ
+    if (userAnswer + 1 === questions[questionIndex]['correct']) {
+        score++;
+    }
 }
