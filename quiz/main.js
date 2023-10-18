@@ -41,6 +41,8 @@ let score = 0; // количество правильных ответов
 let questionIndex = 0; // текущий вопрос
 
 clearPage();
+showQuestion();
+submitBtn.onclick = checkAnswer;
 
 function clearPage() {
     headerContainer.innerHTML = '';
@@ -57,15 +59,29 @@ function showQuestion() {
     headerContainer.innerHTML = title;
 
     // Варианты ответов:
-    for (answerText of questions[questionIndex]['answers']) {
+    for ([index, answerText] of questions[questionIndex]['answers'].entries()) {
         const questionTemplate = `<li>
 				<label>
-					<input type="radio" class="answer" name="answer" />
+					<input type="radio" value="%number%" class="answer" name="answer" />
 					<span>%answer%</span>
 				</label>
 			</li>`;
 
-        const answerHTML = questionTemplate.replace('%answer%', answerText);
-        listContainer.innerHTML = listContainer.innerHTML + answerHTML;
+        const answerHTML = questionTemplate
+            .replace('%answer%', answerText)
+            .replace('%number%', index);
+        listContainer.innerHTML += answerHTML;
+    }
+}
+
+function checkAnswer() {
+    // Находим выбранную радио кнопку
+    const checkedRadio = listContainer.querySelector(
+        'input[type="radio"]:checked'
+    );
+
+    if (!checkedRadio) {
+        submitBtn.blur();
+        return;
     }
 }
