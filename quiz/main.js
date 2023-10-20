@@ -92,4 +92,14 @@ function checkAnswer() {
     if (userAnswer + 1 === questions[questionIndex]['correct']) {
         score++;
     }
+    if (questionIndex !== questions.length - 1) {
+        questionIndex++;
+        clearPage();
+        showQuestion();
+    } else {
+        clearPage();
+        showResults();
+    }
 }
+
+function showResults() {}
