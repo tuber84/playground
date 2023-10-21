@@ -102,4 +102,34 @@ function checkAnswer() {
     }
 }
 
-function showResults() {}
+function showResults() {
+    const resultsTemplate = `<h2 class="title">%title%</h2>
+ <h3 class="summary">%message%</h3>
+<p class="result">%result%</p>
+`;
+    let title, message;
+
+    if (score === questions.length) {
+        title = 'Congratulations';
+        message = 'Exelent';
+    } else if ((score * 100) / questions.length >= 50) {
+        title = 'Not bad';
+        message = '50% result';
+    } else {
+        title = 'bad result';
+        message = 'try once more ';
+    }
+
+    let result = `${score} from ${questions.length}`;
+
+    const finalMessage = resultsTemplate
+        .replace('%title%', title)
+        .replace('%message%', message)
+        .replace('%result%', result);
+
+    headerContainer.innerHTML = finalMessage;
+
+    submitBtn.blur();
+    submitBtn.innerText = 'Try again';
+    submitBtn.onclick = () => history.go();
+}
