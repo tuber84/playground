@@ -1,17 +1,3 @@
-// const btnMinus = document.querySelector('[data-action="minus"]');
-// const btnPlus = document.querySelector('[data-action="plus"]');
-// const counter = document.querySelector('[data-counter]');
-//
-// btnMinus.addEventListener('click', function() {
-//   if (parseInt(counter.innerText) > 1) {
-//     counter.innerText = --counter.innerText;
-//   }
-// });
-//
-// btnPlus.addEventListener('click', function() {
-//   counter.innerText = ++counter.innerText;
-// });
-//
 window.addEventListener('click', function (event) {
     let counter;
     if (
@@ -27,8 +13,15 @@ window.addEventListener('click', function (event) {
     }
 
     if (event.target.dataset.action === 'minus') {
+        // проверяем чтобы счетчик был больше 1
         if (parseInt(counter.innerText) > 1) {
             counter.innerText = --counter.innerText;
+        } else if (
+            // проверка на товар который находится в корзине:
+            event.target.closest('.cart-wrapper') &&
+            parseInt(counter.innerText) === 1
+        ) {
+            event.target.closest('.cart-item').remove();
         }
     }
 });
