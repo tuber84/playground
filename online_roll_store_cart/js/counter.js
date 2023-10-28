@@ -1,3 +1,5 @@
+import { toggleCartStatus } from './toggleCartStatus.js';
+
 function counter() {
     window.addEventListener('click', function (event) {
         let counter;
@@ -23,6 +25,9 @@ function counter() {
                 parseInt(counter.innerText) === 1
             ) {
                 event.target.closest('.cart-item').remove();
+
+                // Статус корзины пустая / полная:
+                toggleCartStatus();
             }
         }
     });

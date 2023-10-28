@@ -1,3 +1,5 @@
+import { toggleCartStatus } from './toggleCartStatus.js';
+
 function cart() {
     const cartWrapper = document.querySelector('.cart-wrapper');
 
@@ -18,12 +20,15 @@ function cart() {
                 `[data-id="${productInfo.id}"]`
             );
 
+            // Если есть товар в корзине, суммируем их:
             if (itemInCart) {
                 const counterElement =
                     itemInCart.querySelector('[data-counter]');
                 counterElement.innerText =
                     parseInt(counterElement.innerText) +
                     parseInt(productInfo.counter);
+
+                // Добавляем новый товар в пустую корзину:
             } else {
                 const cartItemHTML = `<div class="cart-item" data-id="${productInfo.id}">
 								<div class="cart-item__top">
@@ -57,6 +62,9 @@ function cart() {
                 cartWrapper.insertAdjacentHTML('beforeend', cartItemHTML);
             }
             cart.querySelector('[data-counter]').innerText = '1';
+
+            // Статус корзины пустая / полная:
+            toggleCartStatus();
         }
     });
 }
