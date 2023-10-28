@@ -1,29 +1,31 @@
-const cartWrapper = document.querySelector('.cart-wrapper');
+function cart() {
+    const cartWrapper = document.querySelector('.cart-wrapper');
 
-window.addEventListener('click', function (event) {
-    if (event.target.hasAttribute('data-cart')) {
-        const cart = event.target.closest('.card');
+    window.addEventListener('click', function (event) {
+        if (event.target.hasAttribute('data-cart')) {
+            const cart = event.target.closest('.card');
 
-        const productInfo = {
-            id: cart.dataset.id,
-            imgSrc: cart.querySelector('.product-img').getAttribute('src'),
-            title: cart.querySelector('.item-title').innerText,
-            itemsInBox: cart.querySelector('[data-items-in-box]').innerText,
-            weight: cart.querySelector('.price__weight').innerText,
-            price: cart.querySelector('.price__currency').innerText,
-            counter: cart.querySelector('[data-counter]').innerText,
-        };
-        const itemInCart = cartWrapper.querySelector(
-            `[data-id="${productInfo.id}"]`
-        );
+            const productInfo = {
+                id: cart.dataset.id,
+                imgSrc: cart.querySelector('.product-img').getAttribute('src'),
+                title: cart.querySelector('.item-title').innerText,
+                itemsInBox: cart.querySelector('[data-items-in-box]').innerText,
+                weight: cart.querySelector('.price__weight').innerText,
+                price: cart.querySelector('.price__currency').innerText,
+                counter: cart.querySelector('[data-counter]').innerText,
+            };
+            const itemInCart = cartWrapper.querySelector(
+                `[data-id="${productInfo.id}"]`
+            );
 
-        if (itemInCart) {
-            const counterElement = itemInCart.querySelector('[data-counter]');
-            counterElement.innerText =
-                parseInt(counterElement.innerText) +
-                parseInt(productInfo.counter);
-        } else {
-            const cartItemHTML = `<div class="cart-item" data-id="${productInfo.id}">
+            if (itemInCart) {
+                const counterElement =
+                    itemInCart.querySelector('[data-counter]');
+                counterElement.innerText =
+                    parseInt(counterElement.innerText) +
+                    parseInt(productInfo.counter);
+            } else {
+                const cartItemHTML = `<div class="cart-item" data-id="${productInfo.id}">
 								<div class="cart-item__top">
 									<div class="cart-item__img">
 										<img src="${productInfo.imgSrc}" alt="${productInfo.title}">
@@ -52,8 +54,11 @@ window.addEventListener('click', function (event) {
 								</div>
 							</div>`;
 
-            cartWrapper.insertAdjacentHTML('beforeend', cartItemHTML);
+                cartWrapper.insertAdjacentHTML('beforeend', cartItemHTML);
+            }
+            cart.querySelector('[data-counter]').innerText = '1';
         }
-        cart.querySelector('[data-counter]').innerText = '1';
-    }
-});
+    });
+}
+
+export { cart };
