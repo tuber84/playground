@@ -1,4 +1,5 @@
 import { toggleCartStatus } from './toggleCartStatus.js';
+import calcCartPrice from './calcCartPrice.js';
 
 function counter() {
     window.addEventListener('click', function (event) {
@@ -28,7 +29,17 @@ function counter() {
 
                 // Статус корзины пустая / полная:
                 toggleCartStatus();
+
+                // Перерасчет стоимости товаров в корзине:
+                calcCartPrice();
             }
+        }
+        // Проверка на клик на +/- внутри корзины:
+        if (
+            event.target.hasAttribute('data-action') &&
+            event.target.closest('.cart-wrapper')
+        ) {
+            calcCartPrice();
         }
     });
 }

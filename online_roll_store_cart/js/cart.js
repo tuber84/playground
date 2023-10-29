@@ -1,4 +1,5 @@
 import { toggleCartStatus } from './toggleCartStatus.js';
+import calcCartPrice from './calcCartPrice.js';
 
 function cart() {
     const cartWrapper = document.querySelector('.cart-wrapper');
@@ -65,6 +66,9 @@ function cart() {
 
             // Статус корзины пустая / полная:
             toggleCartStatus();
+
+            // Подсчет общей стоимости в корзине:
+            calcCartPrice();
         }
     });
 }
