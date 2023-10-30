@@ -9,7 +9,7 @@ function toggleCartStatus() {
         orderForm.classList.remove('none');
     } else {
         cartEmptyBadge.classList.remove('none');
-        orderFotm.classLisr.add('none');
+        orderForm.classList.add('none');
     }
 }
 

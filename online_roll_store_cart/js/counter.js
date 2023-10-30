@@ -1,5 +1,5 @@
 import { toggleCartStatus } from './toggleCartStatus.js';
-import calcCartPrice from './calcCartPrice.js';
+import calcCartPriceAndDelivery from './calcCartPrice.js';
 
 function counter() {
     window.addEventListener('click', function (event) {
@@ -31,7 +31,7 @@ function counter() {
                 toggleCartStatus();
 
                 // Перерасчет стоимости товаров в корзине:
-                calcCartPrice();
+                calcCartPriceAndDelivery();
             }
         }
         // Проверка на клик на +/- внутри корзины:
@@ -39,7 +39,7 @@ function counter() {
             event.target.hasAttribute('data-action') &&
             event.target.closest('.cart-wrapper')
         ) {
-            calcCartPrice();
+            calcCartPriceAndDelivery();
         }
     });
 }

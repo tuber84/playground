@@ -1,5 +1,5 @@
 import { toggleCartStatus } from './toggleCartStatus.js';
-import calcCartPrice from './calcCartPrice.js';
+import calcCartPriceAndDelivery from './calcCartPrice.js';
 
 function cart() {
     const cartWrapper = document.querySelector('.cart-wrapper');
@@ -68,7 +68,7 @@ function cart() {
             toggleCartStatus();
 
             // Подсчет общей стоимости в корзине:
-            calcCartPrice();
+            calcCartPriceAndDelivery();
         }
     });
 }
