@@ -93,3 +93,15 @@ svg {
 ul {
   list-style-type: none; /* Удаляем стандартные маркеры */
 }
+
+.patients__link::before {
+  content: "";
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  /* background-image: url("/brain.png"); */
+  background-image: var(--icon-path, url("/xray-2.svg"));
+  z-index: 12;
+}

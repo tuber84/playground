@@ -3,6 +3,10 @@ const path = require("path");
 const PORT = 3000;
 const app = express();
 
+app.use(express.static(__dirname + "/static"));
+app.use(express.static(__dirname + "/img"));
+// app.use(express.static("public"));
+
 function parseText() {
   let fs = require("fs");
   let listItem = [];
@@ -57,8 +61,6 @@ function parseText() {
 parseText();
 
 // console.log(data);
-
-app.use(express.static(__dirname + "/css"));
 
 const createPath = (page) => path.resolve(__dirname, "", `${page}.ejs`);
 
