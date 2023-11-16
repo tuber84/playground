@@ -67,12 +67,12 @@ h1 {
   gap: 2px;
 }
 
-a {
+.patients__link {
   text-decoration: none;
   color: #b1a296;
   margin-left: 10px;
 }
-a:hover {
+.patients__link:hover {
   color: #edf5e1;
 }
 
@@ -104,4 +104,10 @@ ul {
   /* background-image: url("/brain.png"); */
   background-image: var(--icon-path, url("/xray-2.svg"));
   z-index: 12;
+}
+
+.patients__item-startA:first-of-type::before {
+  content: "A:";
+  font-size: 48px;
+  top: 20px;
 }

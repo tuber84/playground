@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="index.css" type="text/css" />
     <title>List of patients</title>
   </head>
- 
+  
   <body>
 
 <div class="wrapper">
@@ -18,11 +18,11 @@
     <main class="main">
         <div class="scroll-container">
            <ul class="patients__list">
-            <% if (data.length) { %>
-              <% data.forEach(({ order, name, path, typerh }) => { %>
-                <li class="patients__item">
+            <% if (result.N.length  ) { %>
+            <% result.Z.forEach(({  names, path, typerh }) => { %>
+                <li class="patients__item patients__item-startA">
                 <a class="patients__link patients__link-head" href="<%= path %>">
-                <%= `${name}--${typerh}` %></a>
+                <%= `${names}--${path}` %></a>
                 </li>
               <% }) %>
             <% } %>

@@ -1,14 +1,19 @@
-function parseInfo() {
+function parseText() {
   let fs = require("fs");
-  let patientsInfo = [];
+  let listItem = [];
   let str;
-  let patientsInfoArr = [];
+  let parse = [];
   let surnames = [];
   let initials = [];
+  let type = [];
   let path = [];
-  let file = fs.readFileSync("./data/list_short.txt", "utf8", (error, data) => {
-    if (error) throw error;
-  });
+  let order;
+  // const regex = /c\S*/gi;
+  let file = fs.readFileSync(
+    "./data/list_short.txt",
+    "utf8",
+    (error, data) => { },
+  );
   const result = file.split("\n");
 
   result.forEach((item, index) => {
@@ -19,28 +24,39 @@ function parseInfo() {
         .replace(/\^/g, " ")
         .split(",");
 
-      surnames[index] = str[0].split(" ")[0].trim();
+      surnames[index] =
+        str[0].charAt(0) + str[0].split(" ")[0].trim().slice(1).toLowerCase();
       initials[index] = str[0].split(" ", 3).slice(1).join("").trim();
 
       path[index] = `//nas3/rentgen_hir/raid/${str[4]}`;
-      patientsInfo[index] =
-        `${surnames[index]} ${initials[index]},${path[index]}`.split(",");
+      type[index] = str[3].toLowerCase();
 
-      patientsInfoArr.push({
-        name: patientsInfo[index][0],
-        path: patientsInfo[index][1],
+      listItem[index] =
+        `${surnames[index]} ${initials[index]},${path[index]},${type[index]}`.split(
+          ",",
+        );
+
+      parse.push({
+        names: listItem[index][0],
+        path: listItem[index][1],
+        typerh: listItem[index][2],
+      });
+      parse.sort((a, b) => a.names.localeCompare(b.name));
+
+      order = parse.map((item, index) => {
+        return {
+          ...item,
+          order: index + 1,
+        };
       });
     }
   });
-  patientsInfoArr.sort((a, b) => a.name.localeCompare(b.name));
 
-  data = patientsInfoArr.map((item, index) => {
-    return {
-      ...item,
-      order: index + 1,
-    };
-  });
+  data = order;
 }
-parseInfo();
+parseText();
 
-console.log(data);
+// console.log(data);
+module.exports = parseText;
+//
+//
