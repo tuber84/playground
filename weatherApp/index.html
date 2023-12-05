@@ -1,34 +1,43 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>WeatherApp</title>
-    <link rel="stylesheet" href="./css/main.css">
-  </head>
-  <body>
- <div class="weather">
-<form action="" class="form">
-        <input type="text" class="form__input">
-          <button class="form__btn"></button>
-      </form>
 
-        <img src="./img/weather/cloudy.svg" alt="weather" class="weather__img">
-        <div class="weather__temp">22C</div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WeatherApp</title>
+  <link rel="stylesheet" href="./css/main.css">
+</head>
+
+<body>
+  <div class="weather">
+    <form action="" class="form">
+      <input type="text" class="form__input" placeholder="Enter City name">
+      <button class="form__btn">
+        <img src="./img/ui/search.svg" alt="search">
+      </button>
+
+    </form>
+
+
+    <div class="weather__info">
+      <img src="./img/weather/cloudy.svg" alt="weather" class="weather__img">
+      <div class="weather__temp">22c</div>
       <div class="wether__city">New-York</div>
- <div class="wether__details">
-        <div class="details">
+    </div>
+
+    <div class="weather__details">
+      <div class="details">
         <img src="./img/ui/humidity.svg" alt="" class="details__img">
-            <div class="details__value">50%</div>
-          <div class="details__title">humidity</div>
-        </div>
-        <div class="details">
+        <div class="details__value">50%</div>
+        <div class="details__title">humidity</div>
+      </div>
+      <div class="details">
         <img src="./img/ui/wind-speed.svg" alt="" class="details__img">
-            <div class="details__value">10 km/h</div>
-          <div class="details__title">Wind Speed</div>
-        </div>
-      </div>     
-    </div> 
-  <script src="js/main.js"</script>
-  </body>
-</html>
+        <div class="details__value">10 km/h</div>
+        <div class="details__title">Wind Speed</div>
+      </div>
+    </div>
+  </div>
+  <script src="js/main.js" </script>
+  </body >
+</html >
