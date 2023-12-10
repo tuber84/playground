@@ -12,6 +12,11 @@ body {
   margin: 0 auto;
 }
 
+.title-1 {
+  font-size: 34px;
+  font-weight: 600;
+}
+
 .header {
   padding-top: 46px;
   background-color: #f1f1f1;
@@ -81,4 +86,59 @@ body {
 
 .header-content p {
   line-height: 200%;
+}
+
+/* Services */
+
+.services {
+  padding: 90px 0;
+}
+.services-row {
+  display: flex;
+  column-gap: 30px;
+}
+
+.services-card-img {
+  margin-bottom: 30px;
+}
+
+.services-card-title {
+  margin-bottom: 10px;
+  font-weight: 600;
+  font-size: 24px;
+  text-transform: uppercase;
+}
+
+.services-card p {
+  line-height: 200%;
+}
+
+/* Portfolio */
+
+.portfolio {
+  padding: 90px 0;
+  background-color: #f1f1f1;
+}
+.portfolio-title {
+  margin-bottom: 70px;
+  text-align: center;
+}
+.project {
+  text-align: center;
+}
+.project + .project {
+  margin-top: 90px;
+}
+
+.project-img {
+  margin-bottom: 40px;
+}
+
+.project-title {
+  font-size: 18px;
+}
+
+.project-title a {
+  color: black;
+  text-decoration: underline;
 }
