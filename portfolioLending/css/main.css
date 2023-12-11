@@ -63,6 +63,11 @@ body {
   color: black;
 }
 
+.nav-link:hover {
+  color: gray;
+  text-decoration: underline;
+}
+
 .nav-link.active {
   color: #606060;
 }
@@ -73,6 +78,7 @@ body {
   justify-content: space-between;
   column-gap: 30px;
 }
+
 .header-content {
   margin-top: 124px;
   max-width: 500px;
@@ -141,4 +147,60 @@ body {
 .project-title a {
   color: black;
   text-decoration: underline;
+}
+
+/* footer */
+
+.contacts {
+  padding: 90px, 0;
+  text-align: center;
+}
+
+.contacts-title {
+  margin-bottom: 40px;
+}
+
+.contacts-content {
+  min-width: 480px;
+  margin-bottom: 40px;
+  font-size: 18px;
+}
+
+.contacts-button {
+  margin-bottom: 80px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 7px 22px;
+  background-color: black;
+  border-radius: 30px;
+  color: white;
+
+  transition:
+    background-color 0.2s ease-in,
+    top 0.2s ease-in;
+}
+
+.btn:hover,
+btn:focus {
+  background-color: #323232;
+}
+.btn:active {
+  position: relative;
+  top: 1px;
+  background-color: black;
+}
+
+.contacts-social {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 60px;
+  margin-bottom: 40px;
+}
+
+.contacts-footer {
+  color: #828282;
+  margin-bottom: 40px;
 }
