@@ -59,6 +59,10 @@ body {
   font-size: 14px;
 }
 
+.nav-button {
+  display: none;
+}
+
 .nav-link {
   color: black;
 }
@@ -99,9 +103,17 @@ body {
 .services {
   padding: 90px 0;
 }
+
 .services-row {
   display: flex;
   column-gap: 30px;
+  row-gap: 60px;
+  flex-wrap: wrap;
+}
+
+.services-card {
+  flex: 1 1 0;
+  min-width: 315px;
 }
 
 .services-card-img {
