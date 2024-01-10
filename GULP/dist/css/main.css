@@ -1,0 +1,15 @@
+.footer {
+  background-color: tomato;
+  padding: 100px 0;
+  font-size: 85px;
+  color: white;
+  text-align: center;
+}
+
+.header {
+  background-color: gray;
+  padding: 100px 0;
+  font-size: 38px;
+  text-align: center;
+}
+/*# sourceMappingURL=data:application/json;charset=utf8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImJsb2Nrcy9fZm9vdGVyLnNjc3MiLCJibG9ja3MvX2hlYWRlci5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7O0FDTEY7RUFDRTtFQUNBO0VBQ0E7RUFDQSIsImZpbGUiOiJtYWluLmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5mb290ZXIge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiB0b21hdG87XG4gIHBhZGRpbmc6IDEwMHB4IDA7XG4gIGZvbnQtc2l6ZTogODVweDtcbiAgY29sb3I6IHdoaXRlO1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG59XG4iLCIuaGVhZGVyIHtcbiAgYmFja2dyb3VuZC1jb2xvcjogZ3JheTtcbiAgcGFkZGluZzogMTAwcHggMDtcbiAgZm9udC1zaXplOiAzOHB4O1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG59XG4iXX0= */
