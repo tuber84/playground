@@ -12,6 +12,8 @@ const webpack = require('webpack-stream');
 const babel = require('gulp-babel');
 const imageMin = require('gulp-imagemin');
 const imagemin = require('gulp-imagemin');
+// const changed = require('gulp-changed');
+// import changed from 'gulp-changed';
 
 const fileIncludeSettings = {
     prefix: '@@',
@@ -44,7 +46,7 @@ gulp.task('clean', function (done) {
 
 gulp.task('html', function () {
     return gulp
-        .src('./src/*.html')
+        .src(['./src/html/**/*.html', '!./src/html/blocks/*.html'])
         .pipe(plumber(plumberNotify('HTML')))
         .pipe(fileInclude(fileIncludeSettings))
         .pipe(gulp.dest('./dist'));
@@ -64,10 +66,13 @@ gulp.task('sass', function () {
 });
 
 gulp.task('images', function () {
-    return gulp
-        .src('./src/img/**/*')
-        .pipe(gulp.dest('./dist/img/'))
-        .pipe(imageMin({ verbose: true }));
+    return (
+        gulp
+            .src('./src/img/**/*')
+            // .pipe(changed('./dist/img/'))
+            .pipe(gulp.dest('./dist/img/'))
+        // .pipe(imageMin({ verbose: true }))
+    );
 });
 
 gulp.task('fonts', function () {
