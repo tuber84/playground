@@ -1,0 +1,39 @@
+.form {
+  padding: 12px 16px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr auto;
+  align-items: center;
+  gap: 16px;
+}
+
+.form__devider {
+  height: 24px;
+  width: 1px;
+  background: #909090;
+}
+
+.form__label {
+  padding-left: 36px;
+  display: grid;
+  gap: 8px;
+
+  background-image: url("./../img/icons/map.svg");
+  background-position: 0 0;
+  background-size: auto;
+  background-repeat: no-repeat;
+
+  span {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: normal;
+  }
+}
+
+.form__input {
+  font-size: 14px;
+  font-weight: 450;
+
+  &::placeholder {
+    color: var(--text-muted);
+  }
+}
