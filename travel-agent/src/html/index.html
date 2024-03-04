@@ -7,9 +7,12 @@
     <title>Стартовый шаблон</title>
     <link rel="stylesheet" href="./css/main.css" />
   </head>
+
   <body>
     @@include('blocks/header.html')
-    <main>@@include('blocks/discover.html')</main>
+    <main>
+      @@include('blocks/discover.html') @@include('blocks/partners.html')
+    </main>
     @@include('blocks/footer.html')
     <script src="./js/index.bundle.js"></script>
   </body>
